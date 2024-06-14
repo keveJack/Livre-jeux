@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+{% block title %}Hello HomeController!
+{% endblock %}
+{% block body %}
+	
+
+	<div class="row">
+		{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+			<p>Email:
+				{{ app.user.email }}</p>
+			<div class="col d-flex align-items-center justify-content-center">
+				<a class="link-secondary btn btn-primary btn-lg w-75 m-1 pl-5 pr-5 fs-1" href="{{path('app_logout')}}">Se deconnecter</a>
+			</div>
+		{% else %}
+			<div class="col d-flex align-items-center justify-content-center">
+				<a class="link-secondary btn btn-primary btn-lg w-75 m-1 pl-5 pr-5 fs-1" href="{{path('app_login')}}">Se connecter</a>
+			</div>
+		{% endif %}
+		{% if is_granted('ROLE_ADMIN') %},
+			<div class="col d-flex align-items-center justify-content-center">
+				<a class="link-secondary btn btn-primary btn-lg w-75 m-1 pl-5 pr-5 fs-1" href="{{path('app_admin')}}">Gérer</a>
+			</div>
+		{% else %}
+			<div class="row">
+				<div class="col d-flex align-items-center justify-content-center">
+					<a class="link-secondary btn btn-primary btn-lg w-75 m-1 pl-5 pr-5 fs-1" href="{{path('app_jouer')}}">Jouer</a>
+				</div>
+			{% endif %}
+		</div>
+	</div>
+{% endblock %}

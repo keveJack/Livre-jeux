@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+{% block title %}{% endblock %}
+{% block body %}
+	<div class="d-flex justify-content-center">
+    <div class="col-3"></div>
+		<div class="card col-6 card-body align-items-center bg-light bg-opacity-50">
+			<div>
+				<img class="card-img-top" src="{{ asset('images/avatars/'~personnage.avatar.getNomFichier())}}" alt="Card image cap">
+				<ul>
+					<li>Voici l'aventure:
+						{{ aventure.titre }}</li>
+					<li>De:
+						{{ personnage.prenom }}
+						{{ personnage.nom }}</li>
+
+				</ul>
+				<a href="{{ path('app_play_aventure',{'idPersonnage': personnage.id,'idAventure': aventure.id,'idPartie':partie.id,'idEtape':aventure.premiereEtape.id}) }}" class="btn btn-primary d-flex justify-content-center">Jouer</a>
+			</div>
+		</div>
+         <div class="col-3"></div>
+	</div>
+
+
+{% endblock %}

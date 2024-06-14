@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+{% block title %}{% endblock %}
+{% block body %}
+	<div class="  d-flex justify-content-center ">
+		<div class="card bg-light bg-opacity-50" style="width: 70%;">
+        <div class="d-flex justify-content-center ">
+        <ul>
+                <li><h2>L'aventure en cours: {{ aventure.titre }}</h2></li>
+			<li>{{ partie.etape }}</li>
+            </ul>
+            </div>
+           
+            <div class="d-flex justify-content-center ">
+			{% for alternative in partie.etape.alternatives %}
+
+				<a href="{{ path('app_play_aventure',{'idPersonnage': personnage.id,'idAventure': aventure.id, 'idPartie':partie.id,'idEtape':alternative.etapeSuivante.id}) }}" class="btn btn-primary m-3">
+					{{ alternative.texte}}</a>
+			{% endfor %}
+            
+            </div>
+		</div>
+	</div>
+
+
+{% endblock %}

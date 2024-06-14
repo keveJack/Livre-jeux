@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+	Choisir une aventure
+{% endblock %}
+
+{% block body %}
+	<div class="row">
+		{% for aventure in aventures %}
+			<div class="card bg-light bg-opacity-50" style="width: 18rem;">
+				<img class="card-img-top" src="{{ asset('images/avatars/'~personnage.avatar.getNomFichier())}}" alt="Card image cap">
+				<div class="card-body">
+					<a>{{ personnage.prenom }}
+						{{ personnage.nom }}</a>
+				</div>
+			</div>
+			<div class="card bg-light bg-opacity-50" style="width: 60%;">
+				<div class="card-body d-flex justify-content-center align-items-center" style=";">
+                <ul>
+					<li>Titre: {{ aventure.titre }}</li>
+                   <li>Description: {{ aventure.description}}</li>
+
+					<a href="{{ path('app_start_aventure',{'idPersonnage': personnage.id,'idAventure': aventure.id}) }}" class="btn btn-primary d-flex justify-content-center">Jouer</a>
+				</ul>
+                </div>
+
+			</div>
+		{% endfor %}
+	</div>
+
+
+{% endblock %}
